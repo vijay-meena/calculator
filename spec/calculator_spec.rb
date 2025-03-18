@@ -45,5 +45,12 @@ RSpec.describe "Calculator" do
     it "ignores number bigger than 1000" do
       expect(add("//;\n1;2,3;1001\n5")).to eq(11)
     end
+
+    it "supports custom delimiters of any length defined in the format '//[delimiter]\n[numbers...]'" do
+      expect(add("//[;]\n1;2")).to eq(3)
+      expect(add("//[||]\n3||4||5")).to eq(12)
+      expect(add("//[---]\n10---20---30")).to eq(60)
+      expect(add("//[****]\n10****20****30")).to eq(60)
+    end
   end
 end
