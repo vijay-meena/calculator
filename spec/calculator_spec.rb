@@ -11,5 +11,10 @@ RSpec.describe "Calculator" do
       expect(add("1")).to eq(1)
       expect(add("5")).to eq(5)
     end
+
+    it "correctly sums up multiple numbers in a comma-separated string" do
+      expect(add("1,2,3")).to eq(6)
+      expect(add("4,5")).to eq(9)
+    end
   end
 end
