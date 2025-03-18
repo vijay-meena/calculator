@@ -16,5 +16,9 @@ RSpec.describe "Calculator" do
       expect(add("1,2,3")).to eq(6)
       expect(add("4,5")).to eq(9)
     end
+
+    it "allows new lines between numbers (treating them as commas)" do
+      expect(add("1\n2,3")).to eq(6)
+    end
   end
 end
