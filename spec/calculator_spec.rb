@@ -1,6 +1,7 @@
 RSpec.describe "Calculator" do
-  describe "#nothing" do
-    it "should do nothing" do
+  describe "#add" do
+    it "returns 0 for an emptry string" do
+      expect(add("")).to eq(0) 
     end
   end
 end
