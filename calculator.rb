@@ -1,3 +1,12 @@
 def add(string)
-  string.gsub("\n", ",").split(",").map(&:to_i).sum
+
+  delimiter = /,|\n/
+  custom_delimiter_pattern = /^\/\/(.)\n/
+
+  if match = string.match(custom_delimiter_pattern)
+    string = string.sub(custom_delimiter_pattern, '')
+    delimiter = Regexp.new(delimiter.source + "|" + match[1])
+  end
+
+  string.split(delimiter).map(&:to_i).sum
 end
