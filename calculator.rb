@@ -2,11 +2,13 @@ require 'byebug'
 
 def add(string)
   delimiter = /,|\n/
-  custom_delimiter_pattern = /^\/\/(\[(?<delimiter>.*?)\]|(?<delimiter>.))\n/
+  custom_delimiter_pattern = /^\/\/(?<delimiter>(?:\[.+?\])+|.)\n/
 
   if match = string.match(custom_delimiter_pattern)
     string = match.post_match
-    delimiter = Regexp.union(delimiter, match[:delimiter])
+    matched_delimiters = match[:delimiter].scan(/\[(.*?)\]/).flatten
+    matched_delimiters.push(match[:delimiter]) if matched_delimiters.empty?
+    delimiter = Regexp.union(delimiter, *matched_delimiters)
   end
 
   numbers = string.split(delimiter).map(&:to_i)
