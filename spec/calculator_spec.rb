@@ -20,5 +20,11 @@ RSpec.describe "Calculator" do
     it "allows new lines between numbers (treating them as commas)" do
       expect(add("1\n2,3")).to eq(6)
     end
+
+    it "supports custom delimiters defined in the format '//[delimiter]\n[numbers...]'" do
+      expect(add("//;\n1;2")).to eq(3)
+      expect(add("//|\n3|4|5")).to eq(12)
+      expect(add("//-\n10-20-30")).to eq(60)
+    end
   end
 end
