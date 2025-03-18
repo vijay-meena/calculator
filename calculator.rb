@@ -1,3 +1,3 @@
 def add(string)
-  return 0
+  return string.to_i
 end
