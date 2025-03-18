@@ -5,7 +5,7 @@ def add(string)
 
   if match = string.match(custom_delimiter_pattern)
     string = string.sub(custom_delimiter_pattern, '')
-    delimiter = Regexp.new(delimiter.source + "|" + match[1])
+    delimiter = Regexp.new(delimiter.source + "|" + Regexp.escape(match[1]))
   end
 
   string.split(delimiter).map(&:to_i).sum
