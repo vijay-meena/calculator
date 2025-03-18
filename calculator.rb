@@ -8,5 +8,11 @@ def add(string)
     delimiter = Regexp.new(delimiter.source + "|" + Regexp.escape(match[1]))
   end
 
-  string.split(delimiter).map(&:to_i).sum
+  numbers = string.split(delimiter).map(&:to_i)
+
+  #find negative numbers
+  negatives = numbers.select { |n| n < 0 }
+  raise "negative numbers not allowed #{negatives.join(',')}" unless negatives.empty?
+
+  numbers.sum
 end
