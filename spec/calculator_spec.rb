@@ -56,5 +56,9 @@ RSpec.describe "Calculator" do
     it "supports multiple delimiters defined in the format '//[delim1][delim2]\n[numbers..]'" do
       expect(add("//[*][%]\n1*2%3")).to eq(6)
     end
+
+    it "supports multiple delimiters with length greater than one char" do
+      expect(add("//[**][%]\n1**2%3,4\n5")).to eq(15)
+    end
   end
 end
