@@ -60,5 +60,12 @@ RSpec.describe "Calculator" do
     it "supports multiple delimiters with length greater than one char" do
       expect(add("//[**][%]\n1**2%3,4\n5")).to eq(15)
     end
+
+    # we do not know the expected output if string is not in valid format
+    # since requirement did not mention it
+    # this is a edge test case
+    xit "strictly enforces delimiter length when parsing numbers" do
+      expect(add("//[*]\n1**2")).not_to eq(3)
+    end
   end
 end
