@@ -26,5 +26,10 @@ RSpec.describe "Calculator" do
       expect(add("//|\n3|4|5")).to eq(12)
       expect(add("//-\n10-20-30")).to eq(60)
     end
+
+    it "support special character to be used as a delimiter such that '.' or '*' " do
+      expect(add("//.\n3.4.5")).to eq(12)
+      expect(add("//*\n10*20*30")).to eq(60)
+    end
   end
 end
