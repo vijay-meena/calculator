@@ -31,5 +31,9 @@ RSpec.describe "Calculator" do
       expect(add("//.\n3.4.5")).to eq(12)
       expect(add("//*\n10*20*30")).to eq(60)
     end
+
+    it "support custom delimiters along with standard delimiter ',' and '\n'" do
+      expect(add("//;\n1;2,3;4\n5")).to eq(15)
+    end
   end
 end
