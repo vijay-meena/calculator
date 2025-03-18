@@ -35,5 +35,11 @@ RSpec.describe "Calculator" do
     it "support custom delimiters along with standard delimiter ',' and '\n'" do
       expect(add("//;\n1;2,3;4\n5")).to eq(15)
     end
+
+    it "raises an exception for negative number" do
+      expect { add("1,-2,3") }.to raise_error(RuntimeError, "negative numbers not allowed -2")
+      expect { add("1,-2,-3") }.to raise_error(RuntimeError, "negative numbers not allowed -2,-3")
+      expect { add("\\-\n1,-2,-3") }.to raise_error(RuntimeError, "negative numbers not allowed -2,-3")
+    end
   end
 end
