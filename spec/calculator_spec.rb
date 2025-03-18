@@ -1,3 +1,5 @@
+require_relative '../calculator.rb'
+
 RSpec.describe "Calculator" do
   describe "#add" do
     it "returns 0 for an emptry string" do
