@@ -5,5 +5,11 @@ RSpec.describe "Calculator" do
     it "returns 0 for an emptry string" do
       expect(add("")).to eq(0) 
     end
+
+    it "returns the number itslef if only one number is given" do
+      expect(add("0")).to eq(0)
+      expect(add("1")).to eq(1)
+      expect(add("5")).to eq(5)
+    end
   end
 end
